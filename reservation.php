@@ -84,9 +84,9 @@
 include 'connection.php';
 session_start();
 $sql = "SELECT IdVol, Depart, Destination, Date, NombrePlace, Prix FROM vols";
-
 $result = $conn->query($sql);
-$IdVol = 1;
+$IdVol = $_GET['id'];
+echo $IdVol;
 if ($result->num_rows > $IdVol) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
@@ -171,13 +171,15 @@ $conn = new mysqli($servername, $username, $password, $dbname);
   if (empty($name)) {
     echo "Name is empty";
   } else {
-      $add_data_on_client_table = "INSERT INTO `client` (`Nom`, `Email`, `PhoneNumber`) VALUES
+    $add_data_on_client_table = "INSERT INTO `client` (`Nom`, `Email`, `PhoneNumber`) VALUES
     ('" . $_POST['nom'] . "', '" . $_POST['email'] . "', '" . $_POST['ntel'] . "')";
     if ($conn->query($add_data_on_client_table) === TRUE) {
       $client_id = $conn->insert_id;
       $date = date("Y-m-d");
+      $IdVol = (int)$IdVol;
       $add_data_on_reservation_table = "INSERT INTO `reservation` (`IdClient`, `IdVol`, `IdPlace`, `DateReservation`) VALUES
     ('" . $client_id . "', '" . $IdVol . "', '0', '" . $date . "')";
+    
     $decrement_Places =("UPDATE vols SET NombrePlace = NombrePlace - 1 WHERE IdVol = $IdVol and NombrePlace > 0");
     if($conn->query($decrement_Places) == TRUE){
       echo "vols data stored success <br>";
@@ -191,7 +193,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
       $_SESSION['reserv_id']   = $reserv_id;
       header('location:confirmation.php');
       }else{
-      echo "Error: " . $add_data_on_client_table . "<br>" . $conn->error;
+      echo "Error: " . $add_data_on_reservation_table . "<br>" . $conn->error;
       }
       } else {
       echo "Error: " . $add_data_on_client_table . "<br>" . $conn->error;

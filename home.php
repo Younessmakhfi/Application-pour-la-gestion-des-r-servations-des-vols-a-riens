@@ -13,7 +13,24 @@
 </head>
 
 <body>
+<?php
 
+include('connection.php');
+
+    $Depart = $_POST['Depart'];
+	$Destination = $_POST['Destination'];
+    $query = "SELECT * from vols where Depart='$Depart' AND Destination='$Destination' AND NombrePlace > 0";
+    $result = $conn->query($query);
+    if (!$result) {
+        trigger_error('Invalid query: ' . $conn->error);
+    }
+    // $stmt = $conn->prepare($query);
+	// $stmt->execute();
+	// $result = $stmt->get_result();
+  
+  
+
+?>
 
     <!-- header-start -->
     <header>
@@ -63,7 +80,7 @@
         </div>
     </header>
     <!-- header-end -->
-  
+
     <!-- slider_area_start -->
     <div class="slider_area">
         <div class="slider_active owl-carousel">
@@ -93,47 +110,49 @@
                         <h3>Where you want to go?</h3>
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    <div class="search_wrap">
-                        <form class="search_form" action="" method="post">
-                            <div class="input_field">
-                                <input type="text" placeholder="depart" name="Depart">
-                            </div>
-                            <div class="input_field">
-                                <input id="datepicker" placeholder="destination" name="Destination">
-                            </div>
-
-                            <div class="search_btn">
-                                <button class="boxed-btn4 " type="submit" name="submit" >Search</button>
-                            </div>
-                        </form>
-                        <?php
-
-include('connection.php');
-if (isset($_POST["submit"])){
-    $Depart =$_POST["Depart"];
-	$Destination = $_POST["Destination"];
-    $query = "SELECT * from vols where Depart='$Depart' AND Destination='$Destination' AND NombrePlace > 0";
-    $result = $conn->query($query);
-    if (!$result) {
-        trigger_error('Invalid query: ' . $conn->error);
-    }
-  } 
-   
-    // $stmt = $conn->prepare($query);
-	// $stmt->execute();
-	// $result = $stmt->get_result();
-  
-  
-
-?>
-                    </div>
-                </div>
+                
+                <?php include('index.php');?>
             </div>
         </div>
     </div>
     <!-- where_togo_area_end  -->
-   
+    <div>
+            <?php
+				$row_cnt = $result->num_rows; 
+				if($row_cnt <= 0)
+				echo " Aucun résultat trouvé";							
+				else{
+				echo"<table class='table table-bordered'>
+				<thead>
+                    <tr>
+                    <th scope='col'>IdVol</th>
+						<th scope='col'>Depart</th>
+						<th scope='col'>Destination</th>
+						<th scope='col'>Date</th>
+                        <th scope='col'>NombrePlace</th>
+                        <th scope='col'>Prix</th>
+                        <th scope='col'>Reserve now</th>
+					</tr>
+				</thead>
+                <tbody>";
+                            while ($row = $result->fetch_assoc()) { ?>
+                            <td><?= $row['IdVol']; ?></td>
+								<td><?= $row['Depart']; ?></td>
+								<td><?= $row['Destination']; ?></td>
+								<td><?= $row['Date']; ?></td>
+                                <td><?= $row['NombrePlace']; ?></td>
+                                <td><?= $row['Prix']; ?></td>
+                                <td>
+									<a class="btn btn-success" href="reservation.php?id=<?= $row['IdVol']; ?>" type="button">Reserver</i></a>
+								</td>
+                                
+                                
+
+						</tr>
+			<?php }} ?>
+        </div>
+        </div>
+    </div>
 </div>
     <!-- popular_destination_area_start  -->
 <div class="popular_destination_area">
@@ -148,8 +167,7 @@ if (isset($_POST["submit"])){
 
     <!-- popular_destination_area_end  -->
    
-    <footer class="footer">
-        
+    <!-- <footer class="footer">
         <div class="footer_top">
             <div class="container">
                 <div class="row">
@@ -268,7 +286,7 @@ if (isset($_POST["submit"])){
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 </body>
 
 </html>
