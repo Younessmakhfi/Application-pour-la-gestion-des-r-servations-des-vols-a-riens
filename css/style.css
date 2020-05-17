@@ -375,7 +375,20 @@ h3 {
   transition: 0.3s;
   cursor: pointer;
 }
-
+#confirmé{
+  width: 10%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.ticket{
+  width: 600px;
+  height: 530px;
+  align-items: center;
+  margin: auto;
+}
+.infos{
+  margin-top: 45px;
+}
 /* line 42, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_btn.scss */
 .boxed-btn3:hover {
   background: #FF4A52;
@@ -438,6 +451,7 @@ h3 {
   position: relative;
   z-index: 0;
   padding-bottom: 7px;
+  margin-top: 30px;
 }
 
 @media (max-width: 767px) {
@@ -1158,7 +1172,7 @@ h3 {
 
 /* line 23, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
 .slider_area .single_slider {
-  height: 500px;
+  height: 552px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -1188,10 +1202,9 @@ h3 {
 /* line 38, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text h3 {
   font-family: "Nothing You Could Do", cursive;
-  font-size: 150px;
+  font-size: 65px;
   text-transform: capitalize;
   font-weight: 400;
-  line-height: .5;
   color: #fff;
   margin-bottom: 0;
 }
@@ -1199,34 +1212,34 @@ h3 {
 @media (max-width: 767px) {
   /* line 38, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text h3 {
-    font-size: 50px;
+    font-size: 20px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 38, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text h3 {
-    font-size: 94px;
+    font-size: 74px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 38, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text h3 {
-    font-size: 100px;
+    font-size: 80px;
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1500px) {
   /* line 38, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text h3 {
-    font-size: 120px;
+    font-size: 100px;
   }
 }
 
 /* line 62, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text p {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 400;
   color: #FFF;
   margin-top: 33px;

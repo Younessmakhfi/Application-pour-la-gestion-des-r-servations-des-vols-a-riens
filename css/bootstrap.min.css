@@ -1798,6 +1798,9 @@ pre code {
 
 .table-bordered {
     border: 1px solid #dee2e6
+    width: 80%;
+    margin: auto;
+    margin-bottom: 40px;
 }
 
 .table-bordered td,
@@ -4683,7 +4686,14 @@ tbody.collapse.show {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 1.25rem
+    padding: 1.25rem;
+    border: 1px solid rgb(250, 198, 67);
+    width: 60%;
+    margin: auto;
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
 }
 
 .card-title {

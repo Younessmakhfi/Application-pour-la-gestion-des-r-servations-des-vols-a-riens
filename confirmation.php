@@ -1,7 +1,12 @@
 <?php
 include 'connection.php';
+
 session_start();
+
+
 $id  = $_SESSION['reserv_id'];
+
+
 $query= "SELECT * FROM reservation WHERE IdReservation=?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i",$id );
@@ -36,11 +41,13 @@ $row2 = $result->fetch_assoc();
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    
+
 </head>
+
 <body>
     <header>
         <div class="header-area ">
@@ -59,9 +66,9 @@ $row2 = $result->fetch_assoc();
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="home.html">home</a></li>
-                                            <li><a class="" href="reservation.html">Reservation</a></l/li>
-                                            <li><a href="confirmation.html">Cofirmation</a></li>
+                                            <li><a class="active" href="home.php">home</a></li>
+                                            <li><a class="" href="reservation.php">Reservation</a></l/li> <li><a
+                                                    href="confirmation.php">Cofirmation</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -70,14 +77,6 @@ $row2 = $result->fetch_assoc();
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
                                     <div class="number">
                                         <p> <i class="fa fa-phone"></i> +21260000000000</p>
-                                    </div>
-                                    <div class="social_links d-none d-xl-block">
-                                        <ul>
-                                            <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +97,9 @@ $row2 = $result->fetch_assoc();
         <div class="card-header">
             Reservation Détails
         </div>
+
         <div class="card-body">
+            <div class="infos">
             <h5 class="card-title">Nom : <?= $row1['Nom']; ?></h5>
             <h5 class="card-title">Email : <?= $row1['Email']; ?></h5>
             <h5 class="card-title">Phone : <?= $row1['PhoneNumber']; ?></h5>
@@ -106,50 +107,16 @@ $row2 = $result->fetch_assoc();
             <h5 class="card-title">Destination : <?= $row2['Destination']; ?></h5>
             <h5 class="card-title">Date Time : <?= $row2['Date']; ?></h5>
             <h5 class="card-title">Nombre de Place : <?= $row2['NombrePlace']; ?></h5>
-            <h5 class="card-title">Prix   : <?= $row2['Prix']; ?></h5>
+            <h5 class="card-title">Prix : <?= $row2['Prix']; ?></h5>
+            </div>
+            <div>
+                <img class="ticket" src="img/ticket.png" alt="">
+            </div>
 
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Confirmé</button>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span> 
-                            </button>
-                        </div>
-                        <div class="modal-body"> ... </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Annulé</button>
-                            <button type="button" class="btn btn-success">Confirmé</button>
-                        </div>
-                    </div>
-                </div>
-            </div>           
         </div>
+        <button id="confirmé" type="button"  class="btn btn-warning" data-toggle="modal"
+                data-target="#exampleModal">Confirmé</button>
     </div>
-    <!-- <button href="#" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"> confirme </button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Annulé</button>
-                <button type="button" class="btn btn-success">Confirmé</button>
-            </div>
-            </div>
-        </div>
-    </div> -->
-    
 
     <footer class="footer">
         <div class="footer_top">
@@ -162,9 +129,9 @@ $row2 = $result->fetch_assoc();
                                     <img class="logo" src="img/footer_logo.png" alt="">
                                 </a>
                             </div>
-                            <p>5th flora, 700/D kings road, green <br> lane New York-1782 <br>
-                                <a href="#">+10 367 826 2567</a> <br>
-                                <a href="#">contact@carpenter.com</a>
+                            <p>MZY, YouCode <br> Safi, Morocco<br>
+                                <a href="#">+212600000000</a> <br>
+                                <a href="#">contact@MZY.com</a>
                             </p>
                             <div class="socail_links">
                                 <ul>
