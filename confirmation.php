@@ -89,8 +89,7 @@ $row2 = $result->fetch_assoc();
     </header>
     <div class="destination_banner_wrap overlay">
         <div class="destination_text text-center">
-            <h3>Saintmartine Iceland</h3>
-            <p>Pixel perfect design with awesome contents</p>
+            <h3>Enjoy Your Flight</h3>
         </div>
     </div>
     <div class="card text-center">
@@ -98,24 +97,43 @@ $row2 = $result->fetch_assoc();
             Reservation Détails
         </div>
 
-        <div class="card-body">
+        <form class="card-body">
             <div class="infos">
-            <h5 class="card-title">Nom : <?= $row1['Nom']; ?></h5>
-            <h5 class="card-title">Email : <?= $row1['Email']; ?></h5>
-            <h5 class="card-title">Phone : <?= $row1['PhoneNumber']; ?></h5>
-            <h5 class="card-title">Depart : <?= $row2['Depart']; ?></h5>
-            <h5 class="card-title">Destination : <?= $row2['Destination']; ?></h5>
-            <h5 class="card-title">Date Time : <?= $row2['Date']; ?></h5>
-            <h5 class="card-title">Nombre de Place : <?= $row2['NombrePlace']; ?></h5>
-            <h5 class="card-title">Prix : <?= $row2['Prix']; ?></h5>
+                <h5 class="card-title">Nom : <?= $row1['Nom']; ?></h5>
+                <h5 class="card-title">Email : <?= $row1['Email']; ?></h5>
+                <h5 class="card-title">Phone : <?= $row1['PhoneNumber']; ?></h5>
+                <h5 class="card-title">Depart : <?= $row2['Depart']; ?></h5>
+                <h5 class="card-title">Destination : <?= $row2['Destination']; ?></h5>
+                <h5 class="card-title">Date Time : <?= $row2['Date']; ?></h5>
+                <h5 class="card-title">Nombre de Place : <?= $row2['NombrePlace']; ?></h5>
+                <h5 class="card-title">Prix : <?= $row2['Prix']; ?></h5>
             </div>
             <div>
                 <img class="ticket" src="img/ticket.png" alt="">
             </div>
-
+    </div>
+    <button id="confirmé" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Confirmé</button>
+    </div>
+    </form>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Réserver votre billet
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">fermé</button>
+                    <button  type="button" class="btn btn-warning" ><a href="home.php">Confirmé</a></button>
+                </div>
+            </div>
         </div>
-        <button id="confirmé" type="button"  class="btn btn-warning" data-toggle="modal"
-                data-target="#exampleModal">Confirmé</button>
     </div>
 
     <footer class="footer">
@@ -238,6 +256,9 @@ $row2 = $result->fetch_assoc();
             </div>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>

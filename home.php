@@ -127,7 +127,7 @@ include('connection.php');
                 <td><?= $row['Date']; ?></td>
                 <td><?= $row['NombrePlace']; ?></td>
                 <td><?= $row['Prix']; ?></td>
-                <td> <a class="boxed-btn4" href="reservation1.php?id=<?= $row['IdVol']; ?>" type="button">Reserver</i></a> </td>
+                <td> <a class="boxed-btn4" href="reservation.php?id=<?= $row['IdVol']; ?>" type="button">Reserver</i></a> </td>
     <?php }}} ?>
 
     <!-- <footer class="footer">
