@@ -39,7 +39,7 @@ include('connection.php');
                                     <nav>
                                         <ul id="navigation">
                                             <li><a class="active" href="home.php">home</a></li>
-                                            <li><a class="" href="reservation1.php">Reservation</a></l/li> <li><a
+                                            <li><a class="" href="reservation.php">Reservation</a></l/li> <li><a
                                                     href="confirmation.php">Cofirmation</a></li>
                                         </ul>
                                     </nav>
